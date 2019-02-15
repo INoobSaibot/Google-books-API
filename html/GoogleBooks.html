@@ -1,0 +1,58 @@
+<script src="../GoogleBooks.js"></script>
+<!--
+<script src="../../lib/jquery-2.1.1.min.js"></script>
+<link rel="stylesheet" href="../../lib/bootstrap.min.css">
+<script src="../../lib/bootstrap.min.js" ></script>
+<link href="../../lib/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+-->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<html>	
+	<style type="text/css">
+	#searchResults {
+		background-color: rgba(0,0,0,.5);
+	}
+
+	.book-detail {
+		
+	}
+
+		
+	</style>
+	<body>
+		<div>
+			<div>
+				<h1>Google Books</h1>
+			</div>
+			<div>
+				<input id="searchText" placeholder="Search" />
+			</div>
+			<div>
+				<button class="btn btn-primary" id="searchButton" type="button">
+						<span class="glyphicon glyphicon-search"></span>Search 
+				</button>
+			</div>
+			<div id="navigation">
+				<button id="previous"> Previous </button>
+				<button id="next"> Next </button>
+				<span>Page: <select id="pageNumber"></select></span>
+			</div>
+			<div id="searchResults">
+			</div>
+		</div>
+	</body>	
+	<script type="text/javascript">
+		$( document ).ready(
+			function() {
+				GoogleBooks.init();
+		});
+		
+	</script>
+</html>

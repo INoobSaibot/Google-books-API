@@ -1,9 +1,17 @@
 var GoogleBooks = {
 	init: function(){
 		$("#searchButton").click(GoogleBooks.search)
+		$('#searchButton').click(function() {
+			$('#searchResults').slideUp();
+		});
 		$("body").on("click", ".book", function() {
 			id = "#" + this.id + "detail";
-			$(id).toggle();
+			if($(id).is(":hidden")) {
+				$(id).show("slow");
+			} else {
+				$(id).slideUp();
+			}
+			//$(id).toggle();
 		});
 	},
 	search: function(){	
@@ -16,12 +24,23 @@ var GoogleBooks = {
 				},
 				"success": function(responseData){
 					//debugger;
+					var authorInfo;
 					for(var i = 0; i < responseData.items.length; i++) {
 						var item = responseData.items[i];
 						var book = item.volumeInfo;
+						console.log((book.authors).length)
+						console.log(book.authors.join(","))
+						
+						if(book.authors.length > 1) {
+							console.log(book.authors)
+							authorInfo = book.authors.join(",")
+						} else {
+							authorInfo = book.authors
+						}
 						$("#searchResults").append("<div id=" + i + " class='book'>"+
 						"Title: " + book.title +
-						"Author(s): " + book.authors.join(", ") +
+						//"Author(s): " + book.authors.join(", ") +
+						"Author(s): " + authorInfo +
 						"Publisher: " + book.publisher +
 						"Published Date: " + book.publishedDate +
 						"</div>");
@@ -40,6 +59,12 @@ var GoogleBooks = {
 						"<a href='" + book.previewLink + "'>"+ "Preview!" + "</a>"+
 						"</div>" + "<hr>")
 					}
+					//bookdetail
+					$('.book-detail').hide();
+
+
+					//search results
+					$('#searchResults').show("slow")
 
 				}
 			}
