@@ -1,6 +1,7 @@
 var GoogleBooks = {
 	init: function(){
 		$("#searchButton").click(GoogleBooks.search)
+		$("#searchResults").hide()
 		$('#searchButton').click(function() {
 			$('#searchResults').slideUp();
 		});
